@@ -1,5 +1,5 @@
 var twitter = require('ntwitter');
-var AppDotNet = require('AppDotNet');
+var AppDotNet = require('appdotnet');
 
 var config = require('./config')
 
