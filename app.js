@@ -10,7 +10,7 @@ config = {
   'twitter_access_token_secret': '5HwTqyuSxP7ddvYTSy8U0cyfQu5sxRpSXx9mLz8pzUs'
 }
 
-appdotnet_client = new AppDotNet(config.token)
+appdotnet_client = new AppDotNet(config.appdotnet_token)
 
 var twit = new twitter({
   consumer_key: config.twitter_consumer_key,
