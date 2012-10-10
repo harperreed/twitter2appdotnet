@@ -2,7 +2,7 @@ var twitter = require('ntwitter');
 var AppDotNet = require('appdotnet');
 
 config = {
-  'appdotnet_token': "AQAAAAAAAVoUOk7ehUvMUr9wzJvUHuyf_aq0Alw49srv7UNw3u8Hfg-Oxmx1HGVwx3wao0gb6Axl_jiaz-MhpKnBgkU94aZsknjCPVdngVVb8KWZjQAFoGIo6P94593QnzTODY1GNE7s"
+  'appdotnet_token': "AQAAAAAAAVoUOk7ehUvMUr9wzJvUHuyf_aq0Alw49srv7UNw3u8Hfg-Oxmx1HGVwx3wao0gb6Axl_jiaz-MhpKnBgkU94aZsknjCPVdngVVb8KWZjQAFoGIo6P94593QnzTODY1GNE7s",
   'twitter_user_id': '813286',
   'twitter_consumer_key': 'O4S7hbxaPkovNiyU6EQ',
   'twitter_consumer_secret': 'RjthdRKq2KcCGpq3bpHqe3W8Ps2fyjaFhkkVs10OZOQ',
