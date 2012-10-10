@@ -2,16 +2,17 @@ var twitter = require('ntwitter');
 var AppDotNet = require('appdotnet');
 
 config = {
-  'appdotnet_token': "AQAAAAAAAVoUOk7ehUvMUr9wzJvUHuyf_aq0Alw49srv7UNw3u8Hfg-Oxmx1HGVwx3wao0gb6Axl_jiaz-MhpKnBgkU94aZsknjCPVdngVVb8KWZjQAFoGIo6P94593QnzTODY1GNE7s",
-  'twitter_user_id': '813286',
-  'twitter_consumer_key': 'O4S7hbxaPkovNiyU6EQ',
-  'twitter_consumer_secret': 'RjthdRKq2KcCGpq3bpHqe3W8Ps2fyjaFhkkVs10OZOQ',
-  'twitter_access_token_key': '813286-TfvGT9oyipkVQtG5ShsU9oy1FleSGADIDfuDyrEcyXo',
-  'twitter_access_token_secret': '5HwTqyuSxP7ddvYTSy8U0cyfQu5sxRpSXx9mLz8pzUs'
+  'appdotnet_token': process.env.APPDOTNET_TOKEN,
+  'twitter_user_id': process.env.TWITTER_USER_ID,
+  'twitter_consumer_key': process.env.TWITTER_CONSUMER_KEY,
+  'twitter_consumer_secret': process.env.TWITTER_CONSUMER_SECRET,
+  'twitter_access_token_key': process.env.TWITTER_TOKEN_KEY,
+  'twitter_access_token_secret': process.env.TWITTER_TOKEN_SECRET
 }
 
 appdotnet_client = new AppDotNet(config.appdotnet_token)
 
+console.log('Instantiating twitter class');
 var twit = new twitter({
   consumer_key: config.twitter_consumer_key,
   consumer_secret: config.twitter_consumer_secret,
@@ -19,17 +20,26 @@ var twit = new twitter({
   access_token_secret: config.twitter_access_token_secret
 });
 
+console.log('Instantiating twitter stream for user id: '+config.twitter_user_id);
 twit.stream('statuses/filter', {'follow':config.twitter_user_id}, function(stream) {
   stream.on('data', function (data) {
     params = {
         'text':data['text'],
-        'id':data['id']
-
+        'id':data['id'],
+        'user_id':data['user']['id']
     }
-    console.log('Received tweet id: '+params['id'])
-    appdotnet_client.createPost(params, function (err, post) {
-        console.log('Posted tweet id: '+params['id']+' to app.net')
-    });  
+    if (params['user_id'] == config.twitter_user_id){
+        console.log('Received tweet id: '+params['id'])
+        appdotnet_client.createPost(params, function (err, post) {
+            console.log('Posted tweet id: '+params['id']+' to app.net')
+            if (err){
+              console.log('ERROR');
+              console.log(err);
+              console.log(params);
+            }
+        });   
+    }
+
   });
 });
 
