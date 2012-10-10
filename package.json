@@ -1,0 +1,11 @@
+{
+  "name": "twitter2appdotnet",
+  "version": "0.0.1",
+  "dependencies": {
+    "appdotnet": "0.2.0"
+    "ntwitter": "0.5.0"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
