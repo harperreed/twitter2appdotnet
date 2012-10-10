@@ -2,7 +2,7 @@
   "name": "twitter2appdotnet",
   "version": "0.0.1",
   "dependencies": {
-    "appdotnet": "0.2.0"
+    "appdotnet": "0.2.0",
     "ntwitter": "0.5.0"
   },
   "engines": {
