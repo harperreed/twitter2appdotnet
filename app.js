@@ -29,6 +29,8 @@ twit.stream('statuses/filter', {'follow':config.twitter_user_id}, function(strea
     console.log('Received tweet id: '+params['id'])
     appdotnet_client.createPost(params, function (err, post) {
         console.log('Posted tweet id: '+params['id']+' to app.net')
+        console.log(post);
+        console.log(err);
     });  
   });
 });
