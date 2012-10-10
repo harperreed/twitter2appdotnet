@@ -10,6 +10,10 @@ config = {
   'twitter_access_token_secret': process.env.TWITTER_TOKEN_SECRET
 }
 
+if (config.appdotnet_token){
+  process.exit(1);
+}
+
 appdotnet_client = new AppDotNet(config.appdotnet_token)
 
 console.log('Instantiating twitter class');
